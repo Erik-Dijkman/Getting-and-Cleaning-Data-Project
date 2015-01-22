@@ -36,11 +36,8 @@ colnames(my_data) <- sub("^t","time",colnames(my_data))
 colnames(my_data) <- sub("BodyBody","Body",colnames(my_data))
 
 # Group by each person (subject) and each activity and take the mean
-# of every measurement  
+# of every measurement. Create a final tidy data set. 
 library(dplyr)
 my_final_data <- my_data %>% 
                 group_by(subject,activity) %>% 
                 summarise_each(funs(mean))
-
-
-

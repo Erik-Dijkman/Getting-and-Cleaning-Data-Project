@@ -1,0 +1,84 @@
+# Code book for the tidy UCI HAR Dataset #
+
+### What does the script file *run_analysis.R* do? ###
+- It binds together the files with all the measurements, subjects and activity codes and creates two data frames (*train* and *test*) for the two different subject groups.
+- It binds together the rows of the two dataframes and creates the data frame *my_data*.
+- It adds column names to the data frame *my_data*.
+- It recreates *my_data* by extracting only the measurements on the mean and the standard deviation for each measurement.
+- It replaces the activity codes by descriptive activity names.
+- It makes the variable names error proof for further analysis by removing dashes and brackets.
+- It puts the variable names in CamelCase format for better readabilty.
+- It replaces the starting 't' in the variable names by 'time' and the starting 'f' by 'frequency'.
+- It replaces the text 'BodyBody' in some of the variable names by 'Body'.
+- It groups the data from *my_data* by subject and activity and takes the average of each variable. The result is assigned to a new data frame called *my_final_data*
+
+### Overview of the variables in the tidy data set ###
+
+- subject
+- activity
+- timeBodyAccMeanX
+- timeBodyAccMeanY
+- timeBodyAccMeanZ
+- timeBodyAccStdevX
+- timeBodyAccStdevY
+- timeBodyAccStdevZ
+- timeGravityAccMeanX
+- timeGravityAccMeanY
+- timeGravityAccMeanZ
+- timeGravityAccStdevX
+- timeGravityAccStdevY
+- timeGravityAccStdevZ
+- timeBodyAccJerkMeanX
+- timeBodyAccJerkMeanY
+- timeBodyAccJerkMeanZ
+- timeBodyAccJerkStdevX
+- timeBodyAccJerkStdevY
+- timeBodyAccJerkStdevZ
+- timeBodyGyroMeanX
+- timeBodyGyroMeanY
+- timeBodyGyroMeanZ
+- timeBodyGyroStdevX
+- timeBodyGyroStdevY
+- timeBodyGyroStdevZ
+- timeBodyGyroJerkMeanX
+- timeBodyGyroJerkMeanY
+- timeBodyGyroJerkMeanZ
+- timeBodyGyroJerkStdevX
+- timeBodyGyroJerkStdevY
+- timeBodyGyroJerkStdevZ
+- timeBodyAccMagMean
+- timeBodyAccMagStdev
+- timeGravityAccMagMean
+- timeGravityAccMagStdev
+- timeBodyAccJerkMagMean
+- timeBodyAccJerkMagStdev
+- timeBodyGyroMagMean
+- timeBodyGyroMagStdev
+- timeBodyGyroJerkMagMean
+- timeBodyGyroJerkMagStdev
+- frequencyBodyAccMeanX
+- frequencyBodyAccMeanY
+- frequencyBodyAccMeanZ
+- frequencyBodyAccStdevX
+- frequencyBodyAccStdevY
+- frequencyBodyAccStdevZ
+- frequencyBodyAccJerkMeanX
+- frequencyBodyAccJerkMeanY
+- frequencyBodyAccJerkMeanZ
+- frequencyBodyAccJerkStdevX
+- frequencyBodyAccJerkStdevY
+- frequencyBodyAccJerkStdevZ
+- frequencyBodyGyroMeanX
+- frequencyBodyGyroMeanY
+- frequencyBodyGyroMeanZ
+- frequencyBodyGyroStdevX
+- frequencyBodyGyroStdevY
+- frequencyBodyGyroStdevZ
+- frequencyBodyAccMagMean
+- frequencyBodyAccMagStdev
+- frequencyBodyAccJerkMagMean
+- frequencyBodyAccJerkMagStdev
+- frequencyBodyGyroMagMean
+- frequencyBodyGyroMagStdev
+- frequencyBodyGyroJerkMagMean
+- frequencyBodyGyroJerkMagStdev
