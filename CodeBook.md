@@ -1,84 +1,152 @@
 # Code book for the tidy UCI HAR Dataset #
 
-### What does the script file *run_analysis.R* do? ###
-- It binds together the files with all the measurements, subjects and activity codes and creates two data frames (*train* and *test*) for the two different subject groups.
-- It binds together the rows of the two dataframes and creates the data frame *my_data*.
-- It adds column names to the data frame *my_data*.
-- It recreates *my_data* by extracting only the measurements on the mean and the standard deviation for each measurement.
-- It replaces the activity codes by descriptive activity names.
-- It makes the variable names error proof for further analysis by removing dashes and brackets.
-- It puts the variable names in CamelCase format for better readabilty.
-- It replaces the starting 't' in the variable names by 'time' and the starting 'f' by 'frequency'.
-- It replaces the text 'BodyBody' in some of the variable names by 'Body'.
-- It groups the data from *my_data* by subject and activity and takes the average of each variable. The result is assigned to a new data frame called *my_final_data*
 
-### Overview of the variables in the tidy data set ###
+## Original data ##
 
-- subject
-- activity
-- timeBodyAccMeanX
-- timeBodyAccMeanY
-- timeBodyAccMeanZ
-- timeBodyAccStdevX
-- timeBodyAccStdevY
-- timeBodyAccStdevZ
-- timeGravityAccMeanX
-- timeGravityAccMeanY
-- timeGravityAccMeanZ
-- timeGravityAccStdevX
-- timeGravityAccStdevY
-- timeGravityAccStdevZ
-- timeBodyAccJerkMeanX
-- timeBodyAccJerkMeanY
-- timeBodyAccJerkMeanZ
-- timeBodyAccJerkStdevX
-- timeBodyAccJerkStdevY
-- timeBodyAccJerkStdevZ
-- timeBodyGyroMeanX
-- timeBodyGyroMeanY
-- timeBodyGyroMeanZ
-- timeBodyGyroStdevX
-- timeBodyGyroStdevY
-- timeBodyGyroStdevZ
-- timeBodyGyroJerkMeanX
-- timeBodyGyroJerkMeanY
-- timeBodyGyroJerkMeanZ
-- timeBodyGyroJerkStdevX
-- timeBodyGyroJerkStdevY
-- timeBodyGyroJerkStdevZ
-- timeBodyAccMagMean
-- timeBodyAccMagStdev
-- timeGravityAccMagMean
-- timeGravityAccMagStdev
-- timeBodyAccJerkMagMean
-- timeBodyAccJerkMagStdev
-- timeBodyGyroMagMean
-- timeBodyGyroMagStdev
-- timeBodyGyroJerkMagMean
-- timeBodyGyroJerkMagStdev
-- frequencyBodyAccMeanX
-- frequencyBodyAccMeanY
-- frequencyBodyAccMeanZ
-- frequencyBodyAccStdevX
-- frequencyBodyAccStdevY
-- frequencyBodyAccStdevZ
-- frequencyBodyAccJerkMeanX
-- frequencyBodyAccJerkMeanY
-- frequencyBodyAccJerkMeanZ
-- frequencyBodyAccJerkStdevX
-- frequencyBodyAccJerkStdevY
-- frequencyBodyAccJerkStdevZ
-- frequencyBodyGyroMeanX
-- frequencyBodyGyroMeanY
-- frequencyBodyGyroMeanZ
-- frequencyBodyGyroStdevX
-- frequencyBodyGyroStdevY
-- frequencyBodyGyroStdevZ
-- frequencyBodyAccMagMean
-- frequencyBodyAccMagStdev
-- frequencyBodyAccJerkMagMean
-- frequencyBodyAccJerkMagStdev
-- frequencyBodyGyroMagMean
-- frequencyBodyGyroMagStdev
-- frequencyBodyGyroJerkMagMean
-- frequencyBodyGyroJerkMagStdev
+A full description is available at the [site][1] where the data was obtained.  
+You can find the data in this [zip file][2]. 
+
+## Overview of the variables in the tidy data set ##
+
+**subject**  
+SubjectID for the person who performed the activity for each window sample. Its range is from 1 to 30.
+
+ **activity**  
+The activity performed by the person (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
+ 
+**timeBodyAccMeanX**  
+**timeBodyAccMeanY**  
+**timeBodyAccMeanZ**  
+The average of means of 3-axial body acceleration signals (time domain).  
+
+**timeBodyAccStdevX**  
+**timeBodyAccStdevY**  
+**timeBodyAccStdevZ**  
+The average of standard deviations of 3-axial body acceleration signals (time domain).  
+
+**timeGravityAccMeanX**  
+**timeGravityAccMeanY**  
+**timeGravityAccMeanZ**  
+The average of means of 3-axial gravity acceleration signals (time domain).  
+
+**timeGravityAccStdevX**  
+**timeGravityAccStdevY**  
+**timeGravityAccStdevZ**  
+The average of standard deviations of 3-axial gravity acceleration signals (time domain).  
+
+**timeBodyAccJerkMeanX**  
+**timeBodyAccJerkMeanY**  
+**timeBodyAccJerkMeanZ**  
+The average of means of 3-axial body acceleration jerk signals (time domain).  
+
+**timeBodyAccJerkStdevX**  
+**timeBodyAccJerkStdevY**  
+**timeBodyAccJerkStdevZ**  
+The average of standard deviations of 3-axial body acceleration jerk signals (time domain).  
+
+**timeBodyGyroMeanX**  
+**timeBodyGyroMeanY**  
+**timeBodyGyroMeanZ**  
+The average of means of 3-axial body gyroscope signals (time domain).  
+
+**timeBodyGyroStdevX**  
+**timeBodyGyroStdevY**  
+**timeBodyGyroStdevZ**  
+The average of standard deviations of 3-axial body gyroscope signals (time domain).  
+
+**timeBodyGyroJerkMeanX**  
+**timeBodyGyroJerkMeanY**  
+**timeBodyGyroJerkMeanZ**  
+The average of means of 3-axial body gyroscope jerk signals (time domain).  
+
+**timeBodyGyroJerkStdevX**  
+**timeBodyGyroJerkStdevY**  
+**timeBodyGyroJerkStdevZ**  
+The average of standard deviations of 3-axial body gyroscope jerk signals (time domain).  
+
+**timeBodyAccMagMean**  
+The average of means of body acceleration magnitude signals (time domain).  
+
+**timeBodyAccMagStdev**  
+The average of standard deviations of body acceleration magnitude signals (time domain).  
+
+**timeGravityAccMagMean**  
+The average of means of gravity acceleration magnitude signals (time domain).  
+
+**timeGravityAccMagStdev**  
+The average of standard deviations of gravity acceleration magnitude signals (time domain).  
+
+**timeBodyAccJerkMagMean**  
+The average of means of body acceleration jerk magnitude signals (time domain).  
+
+**timeBodyAccJerkMagStdev**  
+The average of standard deviations of body acceleration jerk magnitude signals (time domain).  
+
+**timeBodyGyroMagMean**  
+The average of means of 3-axial body gyroscope magnitude signals (time domain).  
+
+**timeBodyGyroMagStdev**  
+The average of standard deviations of 3-axial body gyroscope magnitude signals (time domain).  
+
+**timeBodyGyroJerkMagMean**  
+The average of means of 3-axial body gyroscope jerk magnitude signals (time domain).  
+
+**timeBodyGyroJerkMagStdev**  
+The average of standard deviations of 3-axial body gyroscope jerk magnitude signals (time domain).  
+
+**frequencyBodyAccMeanX**  
+**frequencyBodyAccMeanY**  
+**frequencyBodyAccMeanZ**  
+The average of means of 3-axial body acceleration signals (frequency domain).  
+
+**frequencyBodyAccStdevX**  
+**frequencyBodyAccStdevY**  
+**frequencyBodyAccStdevZ**  
+The average of standard deviations of 3-axial body acceleration signals (frequency domain).  
+
+**frequencyBodyAccJerkMeanX**  
+**frequencyBodyAccJerkMeanY**  
+**frequencyBodyAccJerkMeanZ**  
+The average of means of 3-axial body acceleration jerk signals (frequency domain).  
+
+**frequencyBodyAccJerkStdevX**  
+**frequencyBodyAccJerkStdevY**  
+**frequencyBodyAccJerkStdevZ**  
+The average of standard deviations of 3-axial body acceleration jerk signals (frequency domain).  
+
+**frequencyBodyGyroMeanX**  
+**frequencyBodyGyroMeanY**  
+**frequencyBodyGyroMeanZ**  
+The average of means of 3-axial body gyroscope signals (frequency domain).  
+
+**frequencyBodyGyroStdevX**  
+**frequencyBodyGyroStdevY**  
+**frequencyBodyGyroStdevZ**  
+The average of standard deviations of 3-axial body gyroscope signals (frequency domain).  
+
+**frequencyBodyAccMagMean**  
+The average of means of 3-axial body acceleration magnitude signals (frequency domain).  
+
+**frequencyBodyAccMagStdev**  
+The average of standard deviations of 3-axial body acceleration magnitude signals (frequency domain).  
+  
+**frequencyBodyAccJerkMagMean**  
+The average of means of 3-axial body acceleration jerk magnitude signals (frequency domain).  
+  
+**frequencyBodyAccJerkMagStdev**  
+The average of standard deviations of 3-axial body acceleration jerk magnitude signals (frequency domain).  
+
+**frequencyBodyGyroMagMean**  
+The average of means of 3-axial body gyroscope magnitude signals (frequency domain).  
+
+**frequencyBodyGyroMagStdev**  
+The average of standard deviations  of 3-axial body gyroscope magnitude signals (frequency domain).  
+
+**frequencyBodyGyroJerkMagMean**  
+The average of means of 3-axial body gyroscope jerk magnitude signals (frequency domain).  
+
+**frequencyBodyGyroJerkMagStdev**  
+The average of standard deviations  of 3-axial body gyroscope jerk magnitude signals (frequency domain).  
+
+[1]: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+[2]: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
