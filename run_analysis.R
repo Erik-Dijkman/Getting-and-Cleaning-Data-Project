@@ -16,7 +16,7 @@ colnames(my_data) <- c("subject","activity",
                    as.vector(read.table("./features.txt")[,2]))
 
 # Create a subset with only the mean and standard deviation measurements.
-my_data <- subset(my_data, select= grep("mean[()]|std[()]|subject|activity",
+my_data <- subset(my_data, select= grep("mean\\(\\)|std\\(\\)|subject|activity",
                                     colnames(my_data),value=TRUE))
 
 # Replace the codes in the activity column by activity descriptions.
